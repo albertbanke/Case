@@ -5,7 +5,7 @@
 
 
 # Case for PFA
-Velkommen til mit GitHub repository for case ved PFA. Her vil du finde data brugt til analyse, samt analysen i form af Jupyter Notebook. Dette repository vil opdateres til og med søndag d. 21 februar, hvorefter det vil gå i dvale 
+Velkommen til mit GitHub repository for min case ved PFA. Her vil du finde dataet brugt til analyse, samt analysen i form af en Jupyter Notebook. Dette repository vil opdateres til og med søndag d. 21 februar, hvorefter det vil gå i dvale 
 
 ---
 
@@ -25,4 +25,4 @@ Text
 ---
 
 ## Authors
-Dette repository er vedligeholdt af [Albert Cort Banke](https://www.linkedin.com/in/albert-cort-banke-74b19413b/) og kan anses som værende midledertidigt. 
+Dette repository er oprettet og vedligeholdt af [Albert Cort Banke](https://www.linkedin.com/in/albert-cort-banke-74b19413b/) og kan anses som værende midledertidigt. 
