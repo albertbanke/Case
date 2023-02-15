@@ -25,4 +25,4 @@ Text
 ---
 
 ## Authors
-Dette repository er oprettet og vedligeholdt af [Albert Cort Banke](https://www.linkedin.com/in/albert-cort-banke-74b19413b/) og kan anses som værende midledertidigt. 
+Dette repository er oprettet og vedligeholdt af [Albert Cort Banke](https://www.linkedin.com/in/albert-cort-banke-74b19413b/) og kan anses som værende midlertidigt. 
