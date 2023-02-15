@@ -1,7 +1,8 @@
 # Case for PFA
 Velkommen til mit GitHub repository for case ved PFA. Her vil du finde data brugt til analyse, samt analysen i form af Jupyter Notebook. Dette repository vil opdateres til og med søndag d. 21 februar, hvorefter det vil gå i dvale 
 
-![PFA logo](https://pfa.dk/-/media/pfa-v2/dansk/images/om-pfa/ledelse-og-presserum/logo/pfa-logo-roed.png?la=da-dk&
+![PFA logo](https://pfa.dk/-/media/pfa-v2/dansk/images/om-pfa/ledelse-og-presserum/logo/pfa-logo-roed.png?la=da-dk&hash=15695474A8C04F27420B1F5AD5922D27CDA4A702)
+
 
 
 ---
