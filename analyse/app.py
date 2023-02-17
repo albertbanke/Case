@@ -19,7 +19,8 @@ from sklearn.preprocessing import StandardScaler
 st.title('Case for PFA - findings')
 
 # Add some text to the app
-st.write('Welcome to my app!')
+st.markdown('Velkommen til min HTML-visning. Denne visning fokuserer på findings. Gå til [Notebooken](https://github.com/albertbanke/Case/blob/main/analyse/analyse.ipynb) for at se hele processen (især data wrangling)')
+
 
 st.markdown("""
 _________
