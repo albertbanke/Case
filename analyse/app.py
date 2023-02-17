@@ -412,3 +412,12 @@ fig.update_layout(scene=dict(xaxis_title='Køn (skaleret)', yaxis_title='Alder (
 # Show the plot in Streamlit
 st.plotly_chart(fig)
 
+st.markdown("""
+#### Problemstilling: Hvor mange clusters er der i køn og alder dataet, og hvordan kan machine learning anvendes ved sensitive variabler som disse?
+
+#### **Finding 4: K-means clustering og elbow-metoden viser at det optimale antal clusters er 4 for køn og alder dataet. Machine learning skal anvendes med stor forsigtighed ved sensitive variabler som disse**
+
+Grafen viser, at det optimale antal clusters er 4, som afsløres af de fire røde centroider, der er markeret i den 3D-graf. Dette er interessant, da man kunne have argumenteret for, at der skulle være 10 clusters (2 x køn og 5 x aldersgrupper = 10). En visuel analyse af k-means clusteringen viser noget meget fascinerende. En af clusterne, den markeret med den gule farve, indeholder data fra begge køn. Alle de andre clusters indeholder kun data fra ét køn. Derudover omfatter den gule og lilla cluster data fra alle aldersgrupper. En dybere analyse af dette kunne undersøge, om den gule cluster måske repræsenterer en branche eller en anden variabel, der ikke er medtaget i denne clustering.
+
+Denne analyse er en unsupervised learning-øvelse, hvilket betyder, at vi ikke beder modellen om at fitte noget data ud fra et label. Derudover er denne clustering ikke en regression, hvilket betyder, at den ikke scorer noget - den udforsker blot dataet og grupperingerne i det. Dette er vigtigt at have i mente, da de variabler, vi anvender (køn, alder), er ekstremt sensitive. Hvis øvelsen f.eks. var at modellere en model til at godkende eller afvise banklån, ville det være uetisk at anvende disse variabler som predictors for tilbagebetalingsevne. Clustering modellen her er forholdsvis 'white-box', hvilket betyder, at vi (relativt) nemt kan forklare, hvordan den beregner disse clusters. Hvis det derimod var en 'black-box'-model, ville man igen skulle være forsigtig med at anvende sensitive variabler som disse, da vi ikke ville have en god mulighed for at forklare, hvordan modellen opnår de resultater og predictions, den gør.
+""")
