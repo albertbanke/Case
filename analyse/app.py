@@ -127,7 +127,7 @@ koen_alder_data_filtered['Hoej Score Godt'] = koen_alder_data_filtered['Ordforkl
 
 st.markdown('Her er de wranglede datasæt som bruges til at vise findings. Dataet stammer fra det Nationale Center For Arbejdsmiljøs undersøgelse om fysiske og psykiske forhold fra 50.000 adspurgte danskere i 2018')
 
-st.text('Begge vist i .head()')
+st.text('(Begge vist med .head())')
 
 st.text("Branche data efter data wrangling")
 st.dataframe(branche_data_filtered.head())
