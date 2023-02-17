@@ -21,12 +21,7 @@ st.title('Case for PFA - findings')
 # Add some text to the app
 st.write('Welcome to my app!')
 
-# Create a simple plot using Matplotlib
-x = np.linspace(0, 10, 100)
-y = np.sin(x)
-fig, ax = plt.subplots()
-ax.plot(x, y)
-st.pyplot(fig)
+
 
 # Filepaths, tilpas disse til lokal-sti
 brancher_fp = r'/Users/albertcortbanke/Case/data/arbejdsmarkedsanalyse_brancher.csv'
@@ -36,9 +31,7 @@ koen_alder_fp = r'/Users/albertcortbanke/Case/data/arbejdsmarkedsanalyse_koen_al
 branche_data = pd.read_csv(brancher_fp, delimiter = ";", encoding='latin-1')
 koen_alder_data = pd.read_csv(koen_alder_fp, delimiter = ";", encoding='latin-1')
 
-# Show the first few rows of the branche_data
-st.write("Branche data:")
-st.write(branche_data.head())
+
 
 # List of columns to drop
 columns_to_drop = ['Spm Formulering', 'Field Values Index', 'Farveskala', 'Field Values Index (Fixed)', 'Navigation - Arbejdsmiljøprofiler', 'Gennemsnit', 
@@ -77,10 +70,7 @@ def convert_columns_to_numeric(df):
 branche_data = convert_columns_to_numeric(branche_data)
 koen_alder_data = convert_columns_to_numeric(koen_alder_data)
 
-st.write("value counts for branche_data after transformation:")
-st.write(branche_data.dtypes.value_counts())
-st.write("\nvalue counts for koen_alder_data after transformation:")
-st.write(koen_alder_data.dtypes.value_counts())
+
 
 branche_data = branche_data.dropna(subset=['Type'])
 
@@ -93,8 +83,7 @@ regex_pattern = r'Spørgsmål:\s+|\s{2,}|\W+'
 branche_data['Ordforklaring'] = branche_data['Ordforklaring'].apply(lambda x: re.sub(regex_pattern, ' ', str(x)).strip())
 koen_alder_data['Ordforklaring'] = koen_alder_data['Ordforklaring'].apply(lambda x: re.sub(regex_pattern, ' ', str(x)).strip())
 
-st.write("Checking one of the rows:")
-st.write(branche_data.Ordforklaring[1])
+
 
 # Bruger igen regex mønster til at fange informationen vi ønsker 
 koen_alder_data[['køn', 'alder']] = koen_alder_data['Group'].str.extract(r'(\w+),?\s*(\d+\s*-\s*\d+\s*år)?')
@@ -119,19 +108,68 @@ merged_df.set_index('Ordforklaring', inplace=True)
 koen_alder_data_filtered['Hoej Score Godt'] = koen_alder_data_filtered['Ordforklaring'].map(merged_df['Hoej Score Godt'])
 
 
-st.markdown("## 3. Eksplorativ Data Analyse (EDA)")
-st.markdown("I denne blok analyseres det processerede data eksplorativt med statistik og visualiseringer. Dette afgiver to interresante findings, som præsenteres og analyseres sammen.")
-st.markdown("Et godt udgangspunkt for at lave stærke dataanalyser er at stille skarpe spørgsmål. Her er to problemformuleringer til de to datasæt - begge med et samfundsmæssigt makro-perspektiv.")
-st.markdown("- Hvordan scorer arbejdsmiljøet i forskellige brancher i 2018?")
-st.markdown("- Hvordan scorer arbejdsmiljøet i forskellige grupper af køn og alder i 2018?")
-st.markdown("De to findings er:")
-st.markdown("1) Arbejdsmiljøet scorer bedst i brancher med mere selvstændighed og ansvar, som typisk er i det private")
-st.markdown("2) Arbejdsmiljøet scorer bedst i grupper med mænd og grupper som er yngre")
-st.markdown("Gå gennem koden nedenfor, for at se findings og deres tilsvarende analyse")
+st.markdown("## 3. Eksplorativ Data Analyse (EDA)\n\nI denne blok analyseres det processerede data eksplorativt med statistik og visualiseringer. Dette afgiver to interresante findings, som præsenteres og analyseres sammen.\n\nEt godt udgangspunkt for at lave stærke dataanalyser er at stille skarpe spørgsmål. Her er to problemformuleringer til de to datasæt - begge med et samfundsmæssigt makro-perspektiv.\n\n- Hvordan scorer arbejdsmiljøet i forskellige brancher i 2018?\n- Hvordan scorer arbejdsmiljøet i forskellige grupper af køn og alder i 2018?\n\nDe to findings er:\n1) Arbejdsmiljøet scorer bedst i brancher med mere selvstændighed og ansvar, som typisk er i det private\n2) Arbejdsmiljøet scorer bedst i grupper med mænd og grupper som er yngre\n\nGå gennem koden nedenfor, for at se findings og deres tilsvarende analyse")
+
+
+st.subheader("1) Statistik")
+
+st.markdown("#### Branche")
 
 st.markdown("Vi starter med at udforske dataets statistikker, efter vores transformationer i DW.")
-st.markdown("Summary statistics, hvor 'Hoej Score Godt' == 1, for branche_data_filtered")
 
+st.markdown("Summary statistics, hvor 'Hoej Score Godt' == 1, for branche_data_filtered")
 st.write(branche_data_filtered[branche_data_filtered['Hoej Score Godt'] == 1].describe())
 
+st.markdown("Summary statistics, hvor 'Hoej Score Godt' == 0, for branche_data_filtered")
+st.write(branche_data_filtered[branche_data_filtered['Hoej Score Godt'] == 0].describe())
+
+st.markdown("Den statistiske analyse af branche_data_filtered viser den gennemsnitlige indekserede score for spørgsmål, hvor høj score er godt, til 3.72. For data, hvor høj score er dårligt, er dette tal 2.83. Dette viser, at respondenterne i undersøgelsen generelt har svaret højere ved spørgsmål, hvor 5 er godt, end hvor 5 er dårligt.")
+st.markdown("Gennemsnittet af antal personer, der har svaret på hvert spørgsmål, er 968, hvor høj score er godt, mens det er 967, hvor høj score er dårligt. Dette tal skal dog holdes op i lyset af at der er total rækker, der kan skabe statistisk inflation i dette. **Fokus skal derfor rettes på medianen (50%), hvor tallet falder til henholdsvis 277 og 275 respektivt.**")
+st.markdown("Der er en lille diskrepans på gennemsnittet for 'Score' og Score Indekseret Gennemsnit. Dette er dog ned til 1. decimal og ændrer derfor ikke i det store billede for dataet og vores fremtidige analyse.")
+
+st.markdown("#### Køn og alder")
+
+st.markdown("Summary statistics, hvor 'Hoej Score Godt' == 1, for koen_alder_data_filtered")
+st.write(koen_alder_data_filtered[koen_alder_data_filtered['Hoej Score Godt'] == 1].describe())
+
+st.write(koen_alder_data_filtered[koen_alder_data_filtered['Hoej Score Godt'] == 0].describe())
+
+st.markdown("Den statistiske analyse af koen_alder_data_filtered viser den gennemsnitlige indekserede score for spørgsmål, hvor høj score er godt, til 3.72. For data, hvor høj score er dårligt, er dette tal 2.815. Dette peger på stort overlap blandt spørgsmålene, samtidig også på den samplede population.")
+st.markdown("En stor forskel i forhold til branche-dataet er gennemsnittet af antal personer, der har svaret på hvert spørgsmål. **Sættes fokus på medianen (50%) som beskrevet i analysen for branche-dataet, er tallene 4716 og 4811 respektivt.** Altså markant højere end før. Dette giver god mening, da sampling her ikke er på branche, men derimod på køn og grupperet alder.")
+st.markdown("Der er flere spørgsmål, hvor 'Hoej Score Godt' er == 1. Tallene er 348 for godt og 192 for ikke godt.")
+
+st.subheader("2) Visualiseringer")
+
+
+def plot_top_and_bottom_groups(dataframe, hsg_value, kilde):
+    # Filtrer dataframen til kun at inkludere rækker, hvor 'Hoej Score Godt' er lig med hsg_værdi
+    filtreret_hoej_score_data = dataframe[dataframe['Hoej Score Godt'] == hsg_value]
+
+    # Gruppér data efter "Group" kolonnen og beregn hver gruppes gennemsnitsscore for alle spørgsmål
+    grupperet_data = filtreret_hoej_score_data.groupby(['Group'], as_index=False).mean()
+
+    # Sortér data efter gennemsnitsscore i faldende orden
+    grupperet_data.sort_values(by='Score', ascending=True, inplace=True)
+
+    # Filtrer de øverste 5 og de nederste 5 grupper
+    top_5_grupper = grupperet_data.head(5)
+    bottom_5_grupper = grupperet_data.tail(5)
+
+    # Tilføj en kolonne for at adskille de øverste og nederste 5 grupper
+    top_5_grupper.loc[:, 'Group Type'] = 'Nederste 5 Grupper'
+    bottom_5_grupper.loc[:, 'Group Type'] = 'Øverste 5 Grupper'
+
+    # Kobl de to dataframes
+    kombineret_data = pd.concat([top_5_grupper, bottom_5_grupper])
+
+    # Opret et søjlediagram med Plotlys px
+    fig = px.bar(kombineret_data, x='Score', y='Group', color='Group Type', color_discrete_sequence=['lightsalmon', '#1f77b4'], orientation='h')
+    fig.update_layout(title=f'Øverste og nederste 5 grupper efter samlet score for {kilde}. Høj score godt = {hsg_value}', xaxis_title='Score', yaxis_title='Group')
+    st.plotly_chart(fig)
+
+st.markdown("#### Branche data")
+
+plot_top_and_bottom_groups(branche_data_filtered, 1, 'branche data')
+
+plot_top_and_bottom_groups(branche_data_filtered, 0, 'branche data')
 
