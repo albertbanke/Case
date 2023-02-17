@@ -60,5 +60,5 @@ columns_to_drop = ['Score (Indekseret score) (gennemsnit)', 'Score (Indekseret s
 koen_alder_data = koen_alder_data.drop(columns=columns_to_drop)
 
 # Show the first few rows of the cleaned koen_alder_data
-st.write("Cleaned koen_alder data:")
+st.write("Cleaned koen_alder data HELLO:")
 st.write(koen_alder_data.head())
