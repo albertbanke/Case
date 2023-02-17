@@ -62,3 +62,28 @@ koen_alder_data = koen_alder_data.drop(columns=columns_to_drop)
 # Show the first few rows of the cleaned koen_alder_data
 st.write("Cleaned koen_alder data HELLO:")
 st.write(koen_alder_data.head())
+
+def convert_columns_to_numeric(df):
+    for column in df.columns:
+        if df[column].dtype == 'object' and re.match(r'^[0-9,]+$', df[column].str.strip().str.cat()):
+            try:
+                df[column] = df[column].str.replace(',', '.')
+                df[column] = pd.to_numeric(df[column], errors='coerce')
+            except ValueError:
+                pass
+    return df
+
+branche_data = convert_columns_to_numeric(branche_data)
+koen_alder_data = convert_columns_to_numeric(koen_alder_data)
+
+st.write("value counts for branche_data after transformation:")
+st.write(branche_data.dtypes.value_counts())
+st.write("\nvalue counts for koen_alder_data after transformation:")
+st.write(koen_alder_data.dtypes.value_counts())
+
+
+branche_data = branche_data.dropna(subset=['Type'])
+
+koen_alder_data = koen_alder_data.dropna(subset=['Ordforklaring'])
+
+
