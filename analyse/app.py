@@ -89,7 +89,7 @@ koen_alder_data['Ordforklaring'] = koen_alder_data['Ordforklaring'].apply(lambda
 koen_alder_data[['køn', 'alder']] = koen_alder_data['Group'].str.extract(r'(\w+),?\s*(\d+\s*-\s*\d+\s*år)?')
 
 # Fillna på alder, der hvor det er totaler
-koen_alder_data['alder'] = koen_alder_data['alder'].fillna('18-100 år')
+koen_alder_data['alder'] = koen_alder_data['alder'].fillna('18-64 år')
 
 # Filtrer dataet
 branche_data_filtered = branche_data[branche_data['Ordforklaring'].str.contains('I resultaterne præsenteres den gennemsnitlige score 1 5')]
@@ -190,9 +190,9 @@ st.markdown("""
 
 #### **Finding 2: Arbejdsmiljøet scorer bedst i grupper med mænd og grupper som er yngre**
 
-Når man sammenligner de øverste 5 grupper med de nederste 5 grupper i den første graf med HSG = 1, er det tydeligt, at mænd i alderen 18-24 scorer højest med en gennemsnitlig score på 3.77, mens kvinder i alderen 25-34 scorer lavest med en gennemsnitlig score på 3.69. De øverste 5 grupper i denne graf består af et flertal af grupper med mænd (3 ud af 5) og de to øverste grupper er de yngste i sættet (18-24 år og 25-34 år).
+Når man sammenligner de øverste 5 grupper med de nederste 5 grupper i den anden graf med HSG = 0 (desto højere desto dårligere), ser man et klart mønster: Grupper med kvinder scorer i gennemsnit højere. Kvinder i alderen 25-34 har den højeste score (2.95) og alle grupper i de øverste 5 værdier i denne graf er kvinder. Samtidig er kvinders samlede gruppe i de øverste rækker med en score på 2.88, mens mænds samlede gruppe er at finde i de nederste 5 rækker med en score på 2.77. Selvom forskellen mellem kvinders og mænds score for arbejdsmiljø ikke er stor i decimalpunkter, er det vigtigt at fokusere på det overordnede billede. Kvinder er overrepræsenterede, når scoren for arbejdsmiljø er høj, hvilket indikerer et dårligt arbejdsmiljø for kvinder.
 
-Når man sammenligner de øverste 5 grupper med de nederste 5 grupper i den anden graf med HSG = 0, ser man et klart mønster: Grupper med kvinder scorer i gennemsnit højere. Kvinder i alderen 25-34 har den højeste score (2.95) og alle grupper i de øverste 5 værdier i denne graf er kvinder. Samtidig er kvinders samlede gruppe i de øverste rækker med en score på 2.88, mens mænds samlede gruppe er at finde i de nederste 5 rækker med en score på 2.77. Selvom forskellen mellem kvinders og mænds score for arbejdsmiljø ikke er stor i decimalpunkter, er det vigtigt at fokusere på det overordnede billede. Kvinder er overrepræsenterede, når scoren for arbejdsmiljø er høj, hvilket indikerer et dårligt arbejdsmiljø for kvinder.
+Dette bekræftes i boxplottet. Her er alle medianerne for kvinders aldersgrupper, og den samlede (18-64 år) konsekvent over mændenes, hvilket repræsenterer at kvinders arbejdsmiljø (psykisk og fysisk) er værre end mændenes for vores data. Samtidig kan man i boksplottet se at medianen er lavest for begge køn i aldersgruppen 18-24. Dette viser altså at disse aldersgrupper har det bedste arbejdsmiljø, når de rater, hvor HSG = 0.
 
 Det er vigtigt at bemærke, at dataet er et snapshot fra 2018, og det er derfor nødvendigt at sammenligne med andre tidspunkter for at se udviklingen i arbejdsmiljøet i grupper med forskellige køn og alder. Desuden er det værd at bemærke, at dataet ikke tager højde for personer, der ikke identificerer sig som mand eller kvinde, hvilket begrænser generaliserbarheden til den danske befolkning.
 """)
