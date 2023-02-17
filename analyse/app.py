@@ -4,6 +4,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import re
+import requests
 
 # Visualization 
 
@@ -32,13 +33,19 @@ st.markdown("""
 _________
 """)
 
+url_branche = "https://raw.githubusercontent.com/albertbanke/Case/main/data/arbejdsmarkedsanalyse_brancher.csv" # Make sure the url is the raw version of the file on GitHub
+download_branche = requests.get(url_branche).content
+
+url_koen = "https://raw.githubusercontent.com/albertbanke/Case/main/data/arbejdsmarkedsanalyse_koen_alder.csv" # Make sure the url is the raw version of the file on GitHub
+download_koen = requests.get(url_koen).content
+
 # Filepaths, tilpas disse til lokal-sti
 brancher_fp = r'/Users/albertcortbanke/Case/data/arbejdsmarkedsanalyse_brancher.csv'
 koen_alder_fp = r'/Users/albertcortbanke/Case/data/arbejdsmarkedsanalyse_koen_alder.csv'
 
 # Load the data
-branche_data = pd.read_csv(brancher_fp, delimiter = ";", encoding='latin-1')
-koen_alder_data = pd.read_csv(koen_alder_fp, delimiter = ";", encoding='latin-1')
+branche_data = pd.read_csv(download_branche, delimiter = ";", encoding='latin-1')
+koen_alder_data = pd.read_csv(download_koen, delimiter = ";", encoding='latin-1')
 
 
 
