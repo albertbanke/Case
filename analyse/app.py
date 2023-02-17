@@ -24,7 +24,7 @@ st.markdown("""Velkommen til min HTML-visning. Denne visning fokuserer på findi
             """)
 
 st.markdown("""
-            Visningen består af to elementer, hver med to findings: Eksplorativ dataanalyse og dataanalyse af time-series samt cluster-modellering.
+            Visningen består af to blokke, hver med to findings: Eksplorativ dataanalyse og dataanalyse af time-series samt cluster-modellering.
             """)
 
 
