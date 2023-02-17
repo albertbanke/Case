@@ -182,7 +182,7 @@ plot_top_and_bottom_groups(koen_alder_data_filtered, 0, 'køn og alder data')
 
 df = koen_alder_data_filtered[koen_alder_data_filtered['Hoej Score Godt'] == 0]
 fig = px.box(df, x='alder', y='Score', color='køn')
-fig.update_layout(title='Boxplot for aldersgrupper i køn og alder data ud fra score. Høj score godt = 0')
+fig.update_layout(title='Boxplot for aldersgrupper og køn ud fra score. Høj score godt = 0')
 st.plotly_chart(fig)
 
 st.markdown("""
