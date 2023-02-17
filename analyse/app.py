@@ -132,6 +132,7 @@ st.markdown("#### Køn og alder")
 st.markdown("Summary statistics, hvor 'Hoej Score Godt' == 1, for koen_alder_data_filtered")
 st.write(koen_alder_data_filtered[koen_alder_data_filtered['Hoej Score Godt'] == 1].describe())
 
+st.markdown("Summary statistics, hvor 'Hoej Score Godt' == 0, for koen_alder_data_filtered")
 st.write(koen_alder_data_filtered[koen_alder_data_filtered['Hoej Score Godt'] == 0].describe())
 
 st.markdown("Den statistiske analyse af koen_alder_data_filtered viser den gennemsnitlige indekserede score for spørgsmål, hvor høj score er godt, til 3.72. For data, hvor høj score er dårligt, er dette tal 2.815. Dette peger på stort overlap blandt spørgsmålene, samtidig også på den samplede population.")
