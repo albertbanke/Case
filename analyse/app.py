@@ -300,3 +300,74 @@ Ved at sammenligne punkterne på grafen og iagttage udviklingen for branchen und
 Her er der visualiseret data for et specifikt emne i Arbejdstilsynets rapport - 'Kvantitative krav og grænseløshed'. Ved at gå fra et makrobillede til et mikrobillede af dataet er vi i stand til at lave nogle induktive overvejelser. Bl.a. kan man undersøge reformer som 'Folkeskolereformen' fra 2014, og om disse har haft implikationer på branchens tilstand. Plotter man denne reform på dataet og ser ændringer efter reformen blev lanceret kan det ikke afkræftes at det kan have haft en effekt. 
 """)
 
+st.markdown("""
+_________
+""")
+
+st.markdown("""
+### 2) Clustering-analyse
+
+Til den sidste af vores fund, vil vi udføre en K-means clustering-analyse. K-means clustering-analysen anvender unsupervised learning, hvorfor vi ikke vil give nogen labels. I stedet beder vi K-means om at identificere et antal clusters i vores data baseret på tre kolonner: alder, køn og score. For at gøre de to første kolonner numeriske og anvendelige i analysen, vil vi benytte hot-encoding og map-encoding. Samtidig standard-scaler vi dataet (så det er nemmere for K-means algoritmen at mappe det grundet mindre dimensionalitet).
+""")
+
+# Først laver vi one-hot encoding af køn og alder variablerne. Step 1 er at fjerne 'total' rækkerne for kvinder og mænd
+koen_alder_no_total = koen_alder_data_filtered[~koen_alder_data_filtered['Group'].isin(['Kvinder', 'Mænd'])]
+
+# Step 2 er at one-hot encode køn-kolonnen vi lavede tidligere
+koen_alder_no_total['køn_n'] = np.where(koen_alder_no_total['køn'] == 'Mænd', 0, 1)
+
+# Step 3 er at map encode alder-kolonnen. Først en alders range
+
+age_range_mapping = {
+    '18 - 24 år': 0,
+    '25 - 34 år': 1,
+    '35 - 44 år': 2,
+    '45 - 54 år': 3,
+    '55 - 64 år': 4
+}
+
+# Brug mappingen til at give værdier til kolonnen
+koen_alder_no_total['alder_n'] = koen_alder_no_total['alder'].map(age_range_mapping)
+
+# Fjern Score Indekseret, da vi fokusere på rangen 1-5 som tidligere
+koen_alder_no_total.drop(columns='Score (Indekseret score)')
+
+# Tjek resultatet
+koen_alder_no_total # Ser super ud
+
+# Udtræk de funktioner fra koen_alder_no_total som skal bruges til clustering
+features = koen_alder_no_total[['køn_n', 'alder_n', 'Score']]
+
+# Skaler funktionerne
+scaler = StandardScaler()
+scaled_features = scaler.fit_transform(features)
+
+# Definer en range for antallet af clusters
+cluster_range = range(1, 15)
+
+# Initialiser en liste til at gemme Within-Cluster-Sum-of-Squared-Errors (WCSS) for hvert antal klynger
+wcss = []
+
+# Loop over antallet af clusters
+for num_clusters in cluster_range:
+    # Fit KMeans-modellen
+    kmeans = KMeans(n_clusters=num_clusters)
+    kmeans.fit(scaled_features)
+    
+    # Beregn WCSS
+    wcss.append(kmeans.inertia_)
+
+# Plot WCSS
+fig = px.line(x=cluster_range, y=wcss)
+fig.update_layout(
+    title="Albue-metode til optimal antal clusters",
+    xaxis_title="Antal clusters",
+    yaxis_title="Within-Cluster-Sum-of-Squared-Errors (WCSS)",
+)
+st.plotly_chart(fig)
+
+
+st.markdown("""
+
+""")
+
