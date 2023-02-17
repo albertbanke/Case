@@ -5,6 +5,7 @@ import pandas as pd
 import numpy as np
 import re
 import requests
+import io
 
 # Visualization 
 
@@ -43,9 +44,13 @@ download_koen = requests.get(url_koen).content
 brancher_fp = r'/Users/albertcortbanke/Case/data/arbejdsmarkedsanalyse_brancher.csv'
 koen_alder_fp = r'/Users/albertcortbanke/Case/data/arbejdsmarkedsanalyse_koen_alder.csv'
 
+file_like_branche = io.StringIO(download_branche.decode('utf-8'))
+file_like_koen = io.StringIO(download_koen.decode('utf-8'))
+
+
 # Load the data
-branche_data = pd.read_csv(download_branche, delimiter = ";", encoding='latin-1')
-koen_alder_data = pd.read_csv(download_koen, delimiter = ";", encoding='latin-1')
+branche_data = pd.read_csv(file_like_branche, delimiter = ";", encoding='latin-1')
+koen_alder_data = pd.read_csv(file_like_koen, delimiter = ";", encoding='latin-1')
 
 
 
