@@ -213,3 +213,90 @@ Det er vigtigt at bemærke, at dataet er et snapshot fra 2018, og det er derfor 
 st.markdown("""
 _________
 """)
+
+st.markdown("""
+##  Data analysis: Time-Series Analyse og Cluster-Modelling
+
+I denne blok bruger vi indsigterne fra ovenstående EDA til at lave mere dybdegående analyser af vores data. Dette inkluderer en (kort) time-series analyse af informationen omkring offentlige brancher. Bagefter laves der clustering modelling (unsupervised learning). Tilsammen afgiver dette afgiver to interresante findings, som præsenteres og analyseres sammen. 
+
+Igen stilles der to problemformuleringer til de to datasæt. Denne gange zoomes der ind på specifikke brancher og aldersgrupper. 
+
+* Hvordan har arbejdsmiljøet udviklet sig for branchen undervisning (eksempelvis gymnasielærere) ift. tid til arbejdsopgaver fra 2012 til 2018?
+* Spørgsmål til clustering
+
+De to findings er
+
+1) Arbejdsmiljøet scorer bedst i brancher med mere selvstændighed og ansvar, som typisk er i det private
+2) Arbejdsmiljøet scorer bedst i grupper med mænd og grupper som er yngre
+""")
+
+st.markdown("""
+### 1) Time-series analyse
+
+Data indlæses fra https://at.dk/arbejdsmiljoe-i-tal/national-overvaagning-af-arbejdsmiljoeet-blandt-loenmodtagere-2021/arbejdsmiljoe-og-helbred-2012-2018/. Bagefter plottes det sammen med data fra branche_data_filtered som er repræsentativt for undervisningsbranchen
+""")
+
+# Sætter filepathen
+excel_fp = r'/Users/albertcortbanke/Case/data/Udvikling i branchen undervisning (2012 til 2018).xlsm'
+
+# Reader dataet med read_excel
+undervisning_2012_2018 = pd.read_excel(excel_fp)
+
+# Checker at dataet er loaded korrekt
+undervisning_2012_2018 # Ser helt fint ud, ikke behov for så tunge transformationer som tidligere data 
+
+# Laver en skal af branche der indeholder undervisere og 'Question Label' er 'Ikke nok tid til arbejdsopgaver'
+
+branche_data_filtered_shell = branche_data_filtered[((branche_data_filtered['Group'] == 'Gymnasielærere') | 
+                                                      (branche_data_filtered['Group'] == 'Undervisere og forskere ved universiteter') | 
+                                                      (branche_data_filtered['Group'] == 'Undervisere ved erhvervsskoler')) & 
+                                                     (branche_data_filtered['Question Label'].str.contains('Ikke nok tid til arbejdsopgaver'))]
+
+branche_data_filtered_shell
+
+# Opret et line plot med data fra undervisning_2012_2018
+# x-akse er "År" og y-akse er "Score eller andel", som er navngivet som "Score"
+fig = px.line(undervisning_2012_2018, x='År', y='Score eller andel', title='Udvikling i tid til arbejdsopgaver for branchen "Undervisning" fra 2012-2018 (HSG = 0)', labels={'Score eller andel': 'Score'})
+
+# Tilføj et scatter plot for hver unik gruppe i branche_data_filtered_shell
+for group in branche_data_filtered_shell['Group']:
+    # Filtrer branche_data_filtered_shell for en given gruppe
+    df = branche_data_filtered_shell[branche_data_filtered_shell['Group'] == group]
+    # Tilføj scatter plot til fig med data fra df
+    fig.add_scatter(x=df['Year'], y=df['Score'], mode='markers', name=group)
+
+# Tilføj en lodret linje til fig på år 2014
+fig.add_shape(
+    type='line',
+    x0=2014,
+    x1=2014,
+    y0=0,
+    y1=1,
+    yref='paper',
+    line=dict(color='darkgray', width=2)
+)
+
+# Tilføj en annotation til fig, der angiver "Folkeskolereform" på linjen
+fig.add_annotation(
+    x=2014,
+    y=1,
+    yref='paper',
+    yanchor='bottom',
+    text='Folkeskolereform',
+    font=dict(color='darkgray', size=14),
+    showarrow=False
+)
+
+# Vis fig
+st.plotly_chart(fig)
+
+st.markdown("""
+#### Problemstilling: Hvordan har arbejdsmiljøet udviklet sig for branchen undervisning (eksempelvis gymnasielærere) ift. tid til arbejdsopgaver fra 2012 til 2018?
+
+#### **Finding 3: Tid til arbejdsopgaver for branchen undervisning er blevet mindre fra 2012 til 2018.**
+
+Ved at sammenligne punkterne på grafen og iagttage udviklingen for branchen undervisning, er det tydeligt, at tiden til arbejdsopgaver er blevet mindre. I 2012 ratede branche scoren til 2.6 (mindre er bedre), mens tallet steg til 2.9 i 2018. Selvom den nominelle stigning kan synes lille, repræsenterer dette en stigning på 11,5%. Det betyder altså, at der er mindre tid til de opgaver, som undervisere, såsom gymnasielærere, skal løse. Dette understøtter Finding 1 godt, som viste, at gymnasielærere (og andre brancher inden for det offentlige) lå lavest i forhold til rating af deres arbejdsmiljø.
+
+Her er der visualiseret data for et specifikt emne i Arbejdstilsynets rapport - 'Kvantitative krav og grænseløshed'. Ved at gå fra et makrobillede til et mikrobillede af dataet er vi i stand til at lave nogle induktive overvejelser. Bl.a. kan man undersøge reformer som 'Folkeskolereformen' fra 2014, og om disse har haft implikationer på branchens tilstand. Plotter man denne reform på dataet og ser ændringer efter reformen blev lanceret kan det ikke afkræftes at det kan have haft en effekt. 
+""")
+
