@@ -44,8 +44,8 @@ download_koen = requests.get(url_koen).content
 brancher_fp = r'/Users/albertcortbanke/Case/data/arbejdsmarkedsanalyse_brancher.csv'
 koen_alder_fp = r'/Users/albertcortbanke/Case/data/arbejdsmarkedsanalyse_koen_alder.csv'
 
-file_like_branche = io.StringIO(download_branche.decode('utf-8'))
-file_like_koen = io.StringIO(download_koen.decode('utf-8'))
+file_like_branche = io.StringIO(download_branche.decode('latin-1'))
+file_like_koen = io.StringIO(download_koen.decode('latin-1'))
 
 
 # Load the data
