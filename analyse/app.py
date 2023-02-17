@@ -1,4 +1,5 @@
 import streamlit as st
+
 # Data wrangling
 import pandas as pd
 import numpy as np
@@ -32,8 +33,8 @@ brancher_fp = r'/Users/albertcortbanke/Case/data/arbejdsmarkedsanalyse_brancher.
 koen_alder_fp = r'/Users/albertcortbanke/Case/data/arbejdsmarkedsanalyse_koen_alder.csv'
 
 # Load the data
-branche_data = pd.read_csv(brancher_fp)
-koen_alder_data = pd.read_csv(koen_alder_fp)
+branche_data = pd.read_csv(brancher_fp, delimiter = ";", encoding='latin-1')
+koen_alder_data = pd.read_csv(koen_alder_fp, delimiter = ";", encoding='latin-1')
 
 # Show the first few rows of the branche_data
 st.write("Branche data:")
