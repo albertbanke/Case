@@ -21,7 +21,9 @@ st.title('Case for PFA - findings')
 # Add some text to the app
 st.write('Welcome to my app!')
 
-
+st.markdown("""
+_________
+""")
 
 # Filepaths, tilpas disse til lokal-sti
 brancher_fp = r'/Users/albertcortbanke/Case/data/arbejdsmarkedsanalyse_brancher.csv'
@@ -43,9 +45,7 @@ columns_to_drop = ['Spm Formulering', 'Field Values Index', 'Farveskala', 'Field
 # Drop the specified columns
 branche_data = branche_data.drop(columns=columns_to_drop)
 
-# Show the first few rows of the cleaned branche_data
-st.write("Cleaned branche data:")
-st.write(branche_data.head())
+
 
 # List of columns to drop for the koen_alder_data
 columns_to_drop = ['Score (Indekseret score) (gennemsnit)', 'Score (Indekseret score) (gennemsnit) (label)', 'Farveskala', 'Gennemsnit']
@@ -54,8 +54,7 @@ columns_to_drop = ['Score (Indekseret score) (gennemsnit)', 'Score (Indekseret s
 koen_alder_data = koen_alder_data.drop(columns=columns_to_drop)
 
 # Show the first few rows of the cleaned koen_alder_data
-st.write("Cleaned koen_alder data HELLO:")
-st.write(koen_alder_data.head())
+
 
 def convert_columns_to_numeric(df):
     for column in df.columns:
@@ -107,8 +106,18 @@ merged_df.set_index('Ordforklaring', inplace=True)
 # Skab kolonnen i den originale data frame ud fra merged_df's værdier (inhereted fra )
 koen_alder_data_filtered['Hoej Score Godt'] = koen_alder_data_filtered['Ordforklaring'].map(merged_df['Hoej Score Godt'])
 
+st.text("Branche data efter data wrangling")
+st.dataframe(branche_data_filtered.head())
 
-st.markdown("## 3. Eksplorativ Data Analyse (EDA)\n\nI denne blok analyseres det processerede data eksplorativt med statistik og visualiseringer. Dette afgiver to interresante findings, som præsenteres og analyseres sammen.\n\nEt godt udgangspunkt for at lave stærke dataanalyser er at stille skarpe spørgsmål. Her er to problemformuleringer til de to datasæt - begge med et samfundsmæssigt makro-perspektiv.\n\n- Hvordan scorer arbejdsmiljøet i forskellige brancher i 2018?\n- Hvordan scorer arbejdsmiljøet i forskellige grupper af køn og alder i 2018?\n\nDe to findings er:\n1) Arbejdsmiljøet scorer bedst i brancher med mere selvstændighed og ansvar, som typisk er i det private\n2) Arbejdsmiljøet scorer bedst i grupper med mænd og grupper som er yngre\n\nGå gennem koden nedenfor, for at se findings og deres tilsvarende analyse")
+st.text("Køn og alder data efter data wrangling")
+st.dataframe(koen_alder_data_filtered.head())
+
+
+st.markdown("""
+_________
+""")
+
+st.markdown("## Eksplorativ Data Analyse (EDA)\n\nI denne blok analyseres det processerede data eksplorativt med statistik og visualiseringer. Dette afgiver to interresante findings, som præsenteres og analyseres sammen.\n\nEt godt udgangspunkt for at lave stærke dataanalyser er at stille skarpe spørgsmål. Her er to problemformuleringer til de to datasæt - begge med et samfundsmæssigt makro-perspektiv.\n\n- Hvordan scorer arbejdsmiljøet i forskellige brancher i 2018?\n- Hvordan scorer arbejdsmiljøet i forskellige grupper af køn og alder i 2018?\n\nDe to findings er:\n1) Arbejdsmiljøet scorer bedst i brancher med mere selvstændighed og ansvar, som typisk er i det private\n2) Arbejdsmiljøet scorer bedst i grupper med mænd og grupper som er yngre\n\nGå gennem koden nedenfor, for at se findings og deres tilsvarende analyse")
 
 
 st.subheader("1) Statistik")
@@ -138,6 +147,10 @@ st.write(koen_alder_data_filtered[koen_alder_data_filtered['Hoej Score Godt'] ==
 st.markdown("Den statistiske analyse af koen_alder_data_filtered viser den gennemsnitlige indekserede score for spørgsmål, hvor høj score er godt, til 3.72. For data, hvor høj score er dårligt, er dette tal 2.815. Dette peger på stort overlap blandt spørgsmålene, samtidig også på den samplede population.")
 st.markdown("En stor forskel i forhold til branche-dataet er gennemsnittet af antal personer, der har svaret på hvert spørgsmål. **Sættes fokus på medianen (50%) som beskrevet i analysen for branche-dataet, er tallene 4716 og 4811 respektivt.** Altså markant højere end før. Dette giver god mening, da sampling her ikke er på branche, men derimod på køn og grupperet alder.")
 st.markdown("Der er flere spørgsmål, hvor 'Hoej Score Godt' er == 1. Tallene er 348 for godt og 192 for ikke godt.")
+
+st.markdown("""
+_________
+""")
 
 st.subheader("2) Visualiseringer")
 
@@ -197,3 +210,6 @@ Dette bekræftes i boxplottet. Her er alle medianerne for kvinders aldersgrupper
 Det er vigtigt at bemærke, at dataet er et snapshot fra 2018, og det er derfor nødvendigt at sammenligne med andre tidspunkter for at se udviklingen i arbejdsmiljøet i grupper med forskellige køn og alder. Desuden er det værd at bemærke, at dataet ikke tager højde for personer, der ikke identificerer sig som mand eller kvinde, hvilket begrænser generaliserbarheden til den danske befolkning.
 """)
 
+st.markdown("""
+_________
+""")
