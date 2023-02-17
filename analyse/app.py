@@ -368,6 +368,33 @@ st.plotly_chart(fig)
 
 
 st.markdown("""
-
+Grunden til at WCSS foretrækkes over SSD (Sum of squared distances) til at finde det optimale antal clusters i K-Means clustering, er at det er direkte relateret til målet med clusteralgoritmen, nemlig at minimere summen af kvadrerede afstande mellem hver datapunkt og samtidig undgå at overfitte clusters i datasættet, som SSD godt kan være tilbøjelig til.
 """)
+
+# Lav K-means clustering
+kmeans = KMeans(n_clusters=4)
+kmeans.fit(scaled_features)
+
+# Tilføj cluster labels til data framen
+koen_alder_no_total['Cluster'] = kmeans.labels_
+
+# Udtræk cluster centers
+cluster_centers = kmeans.cluster_centers_
+
+# Udtræk koordinaterne af de forskellige clusters
+x = scaled_features[:, 0]
+y = scaled_features[:, 1]
+z = scaled_features[:, 2]
+
+# Create the 3D scatter plot with the KMeans labels
+fig = px.scatter_3d(x=x, y=y, z=z, color=kmeans.labels_, color_discrete_sequence=px.colors.sequential.Viridis)
+
+# Plot cluster centers
+fig.add_scatter3d(x=cluster_centers[:, 0], y=cluster_centers[:, 1], z=cluster_centers[:, 2], mode='markers', marker=dict(size=10, color='red', symbol='circle'))
+
+# Update the plot layout
+fig.update_layout(scene=dict(xaxis_title='Køn (skaleret)', yaxis_title='Alder (skaleret)', zaxis_title='Score (skaleret)'))
+
+# Show the plot in Streamlit
+st.plotly_chart(fig)
 
