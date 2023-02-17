@@ -1,6 +1,6 @@
 matplotlib
 pandas
 numpy
-re
+re==2.2.1
 plotly
 sklearn
