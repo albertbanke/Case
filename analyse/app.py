@@ -371,6 +371,9 @@ st.markdown("""
 Grunden til at WCSS foretrækkes over SSD (Sum of squared distances) til at finde det optimale antal clusters i K-Means clustering, er at det er direkte relateret til målet med clusteralgoritmen, nemlig at minimere summen af kvadrerede afstande mellem hver datapunkt og samtidig undgå at overfitte clusters i datasættet, som SSD godt kan være tilbøjelig til.
 """)
 
+# Sætter et random seed for reproducibility
+np.random.seed(12)
+
 # Lav K-means clustering
 kmeans = KMeans(n_clusters=4)
 kmeans.fit(scaled_features)
