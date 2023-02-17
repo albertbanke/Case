@@ -20,7 +20,12 @@ st.title('Case for PFA - findings')
 st.subheader('Albert Cort Banke')
 
 # Add some text to the app
-st.markdown('Velkommen til min HTML-visning. Denne visning fokuserer på findings. Hvis du også vil se data wrangling-delen samt flere steps så gå til min [notebook](https://github.com/albertbanke/Case/blob/main/analyse/analyse.ipynb).')
+st.markdown("""Velkommen til min HTML-visning. Denne visning fokuserer på findings. Hvis du også vil se data wrangling-delen samt flere steps så gå til min [notebook](https://github.com/albertbanke/Case/blob/main/analyse/analyse.ipynb).
+            """)
+
+st.markdown("""
+            Visningen består af to elementer, hver med to findings: Eksplorativ dataanalyse og dataanalyse af time-series samt cluster-modellering.
+            """)
 
 
 st.markdown("""
@@ -108,7 +113,9 @@ merged_df.set_index('Ordforklaring', inplace=True)
 # Skab kolonnen i den originale data frame ud fra merged_df's værdier (inhereted fra )
 koen_alder_data_filtered['Hoej Score Godt'] = koen_alder_data_filtered['Ordforklaring'].map(merged_df['Hoej Score Godt'])
 
-st.text('Her er de wranglede datasæt som bruges til at vise findings. Dataet stammer fra det Nationale Center For Arbejdsmiljøs undersøgelse om fysiske og psykiske forhold fra 50.000 adspurgte danskere i 2018')
+st.markdown('Her er de wranglede datasæt som bruges til at vise findings. Dataet stammer fra det Nationale Center For Arbejdsmiljøs undersøgelse om fysiske og psykiske forhold fra 50.000 adspurgte danskere i 2018')
+
+st.text('Begge vist i .head()')
 
 st.text("Branche data efter data wrangling")
 st.dataframe(branche_data_filtered.head())
