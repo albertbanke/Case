@@ -450,3 +450,9 @@ Grafen viser, at det optimale antal clusters er 4, som afsløres af de fire rød
 
 Denne analyse er en unsupervised learning-øvelse, hvilket betyder, at vi ikke beder modellen om at fitte noget data ud fra et label. Derudover er denne clustering ikke en regression, hvilket betyder, at den ikke scorer noget - den udforsker blot dataet og grupperingerne i det. Dette er vigtigt at have i mente, da de variabler, vi anvender (køn, alder), er ekstremt sensitive. Hvis øvelsen f.eks. var at modellere en model til at godkende eller afvise banklån, ville det være uetisk at anvende disse variabler som predictors for tilbagebetalingsevne. Clustering modellen her er forholdsvis 'white-box', hvilket betyder, at vi (relativt) nemt kan forklare, hvordan den beregner disse clusters. Hvis det derimod var en 'black-box'-model, ville man igen skulle være forsigtig med at anvende sensitive variabler som disse, da vi ikke ville have en god mulighed for at forklare, hvordan modellen opnår de resultater og predictions, den gør.
 """)
+
+
+st.markdown("""
+_________
+""")
+
