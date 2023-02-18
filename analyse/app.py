@@ -262,7 +262,7 @@ Data indlæses fra https://at.dk/arbejdsmiljoe-i-tal/national-overvaagning-af-ar
 my_url = r'https://github.com/albertbanke/Case/blob/main/data/Udvikling%20i%20branchen%20undervisning%20(2012%20til%202018).xlsm'
 
 # Sætter filepathen
-excel_fp = r'/Users/albertcortbanke/Case/data/Udvikling i branchen undervisning (2012 til 2018).xlsm'
+
 
 myfile = requests.get(my_url)
 
