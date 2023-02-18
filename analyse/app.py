@@ -259,15 +259,14 @@ st.markdown("""
 Data indlæses fra https://at.dk/arbejdsmiljoe-i-tal/national-overvaagning-af-arbejdsmiljoeet-blandt-loenmodtagere-2021/arbejdsmiljoe-og-helbred-2012-2018/. Bagefter plottes det sammen med data fra branche_data_filtered som er repræsentativt for undervisningsbranchen
 """)
 
-my_url = r'https://github.com/albertbanke/Case/blob/main/data/Udvikling%20i%20branchen%20undervisning%20(2012%20til%202018).xlsm'
-
+my_url = r'https://raw.githubusercontent.com/albertbanke/Case/main/data/Udvikling%20i%20branchen%20undervisning%20(2012%20til%202018).csv'
+download_undervisning = requests.get(my_url).content
 # Sætter filepathen
 
+file_like_undervisning = io.StringIO(download_undervisning.decode('latin-1'))
 
-myfile = requests.get(my_url)
-
-undervisning_2012_2018=pd.read_excel(myfile.content)
-print(df)
+# Load the data
+undervisning_2012_2018 = pd.read_csv(file_like_undervisning, sep = ",", encoding='latin-1')
 
 # Checker at dataet er loaded korrekt
 undervisning_2012_2018 # Ser helt fint ud, ikke behov for så tunge transformationer som tidligere data 
