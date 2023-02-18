@@ -481,4 +481,9 @@ st.markdown("""
 _________
 """)
 
+st.markdown("""
+Tidligt påskeæg - bonusgraf
+🐣
+""")
+
 
