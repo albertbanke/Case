@@ -266,7 +266,7 @@ download_undervisning = requests.get(my_url).content
 file_like_undervisning = io.StringIO(download_undervisning.decode('latin-1'))
 
 # Load the data
-undervisning_2012_2018 = pd.read_csv(file_like_undervisning, sep = ",", encoding='latin-1')
+undervisning_2012_2018 = pd.read_csv(file_like_undervisning, sep = ",")
 
 # Checker at dataet er loaded korrekt
 undervisning_2012_2018 # Ser helt fint ud, ikke behov for så tunge transformationer som tidligere data 
