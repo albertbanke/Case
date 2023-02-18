@@ -482,7 +482,7 @@ _________
 """)
 
 st.markdown("""
-Tidligt påskeæg - bonusgraf
+🐣 Tidligt påskeæg - bonusgraf
 🐣
 """)
 
