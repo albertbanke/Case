@@ -31,6 +31,34 @@ st.markdown("""
 
 
 st.markdown("""
+            **Motivationen** for notebooken skal findes i timingen af Arbejdstilsynets andet-årlige rapport fra 2018, hvor de spurgte 50.000 danskere om deres fysiske og psykiske arbejdsmiljø. Dette var en af de sidste rapporter, der blev udgivet, inden verden blev ramt af COVID-19 pandemien, og derfor vil denne case give os et værdifuldt indblik i arbejdsmiljøet for de adspurgte danskere inden arbejdsmiljøer rundt om blev ændret af work-from-home, Microsoft Teams og massere af afstand.
+            
+            *Findings** fra dataet er følgende. 
+
+*EDA:*
+
+Motiverende spørgsmål
+
+* Hvordan scorer arbejdsmiljøet i forskellige brancher i 2018?
+* Hvordan scorer arbejdsmiljøet i forskellige grupper af køn og alder i 2018?
+
+1. Arbejdsmiljøet scorer bedst i brancher med større selvstændighed og ansvar, typisk i det private.
+2. Arbejdsmiljøet scorer bedre for grupper med mænd og yngre personer.
+
+*Time-series analyse og clustering modellering:*
+
+Motiverende spørgsmål
+
+* Hvordan har arbejdsmiljøet udviklet sig for branchen undervisning (eksempelvis gymnasielærere) ift. tid til arbejdsopgaver fra 2012 til 2018?
+* Hvor mange clusters er der i køn og alder dataet, og hvordan kan machine learning anvendes ved sensitive variabler som disse?
+
+3. Tiden til arbejdsopgaver for branchen undervisning er blevet mindre fra 2012 til 2018.
+4. K-means clustering og elbow-metoden viste, at det optimale antal clusters er 4 for køn og alder dataet. Machine learning skal anvendes med stor forsigtighed ved sensitive variabler som disse.
+            """)
+
+
+
+st.markdown("""
 _________
 """)
 
