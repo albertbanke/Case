@@ -470,7 +470,7 @@ Denne notebook har fokuseret på rapporten fra Arbejdstilsynet om danskernes arb
 Time-series analyse og clustering modellering gav yderligere indsigt i dataet:
 
 3. Tiden til arbejdsopgaver for branchen undervisning er blevet mindre fra 2012 til 2018.
-4. K-means clustering og elbow-metoden viste, at det optimale antal klynger er 4 for køn og alder dataet. Machine learning skal anvendes med stor forsigtighed ved sensitive variabler som disse.
+4. K-means clustering og elbow-metoden viste, at det optimale antal clusters er 4 for køn og alder dataet. Machine learning skal anvendes med stor forsigtighed ved sensitive variabler som disse.
 
 Dataet er historisk og reflektering af udviklingen i arbejdsmiljøet på baggrund af findings er på sin plads. For eksempel kan strejkerne i 2021 blandt sygeplejersker relateres til den lavere vurdering af deres arbejdsmiljø, som blev vist i resultat 1. Kigger man på time-series analysen er en implikation de samfundsændringer som kan påvirke elementer som tid til arbejdsopgaver. Lovgivninger og reformer (såsom folkeskole- og gymnasiereformerne) skal holdes op sammen med dataudviklingen for at hjælpe med at forklare, hvorfor ændringerne ser ud som de gør. Til sidst skal clustering og machine learning anvendes med forsigtighed for sensitive variabler som køn og alder, da det kan føre til indsat bias i modeller, der påvirker menneskers liv.
 
