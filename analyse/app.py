@@ -517,19 +517,10 @@ st.markdown("""
 
 st.title('Gennemsnitlig score per emne (topic label)')
 
-grouped_data_topic = branche_data_filtered.groupby('Topic Label')['Score'].mean()
+grouped_data_topic = branche_data_filtered.groupby('Topic Label')['Score'].mean().reset_index()
+grouped_data_topic = grouped_data_topic.sort_values(by='Score')
 
-fig = px.bar(grouped_data_topic.reset_index(), x='Topic Label', y='Score')
-
-# Add color mapping to the chart based on the value of 'Hoej Score Godt'
-fig.update_traces(marker=dict(
-    color=branche_data_filtered.groupby('Topic Label').first()['Hoej Score Godt'],
-    colorscale='Reds',
-    showscale=True
-))
-
-# Sort the chart in ascending order by the 'Score' value
-fig.data[0].sort_values(by='Score')
+fig = px.bar(grouped_data_topic, x='Topic Label', y='Score', color='Hoej Score Godt')
 
 st.plotly_chart(fig)
 
