@@ -155,9 +155,17 @@ st.write(branche_data_filtered[branche_data_filtered['Hoej Score Godt'] == 1].de
 st.markdown("Summary statistics, hvor 'Hoej Score Godt' == 0, for branche_data_filtered")
 st.write(branche_data_filtered[branche_data_filtered['Hoej Score Godt'] == 0].describe())
 
-st.markdown("Den statistiske analyse af branche_data_filtered viser den gennemsnitlige indekserede score for spørgsmål, hvor høj score er godt, til 3.72. For data, hvor høj score er dårligt, er dette tal 2.83. Dette viser, at respondenterne i undersøgelsen generelt har svaret højere ved spørgsmål, hvor 5 er godt, end hvor 5 er dårligt.")
-st.markdown("Gennemsnittet af antal personer, der har svaret på hvert spørgsmål, er 968, hvor høj score er godt, mens det er 967, hvor høj score er dårligt. Dette tal skal dog holdes op i lyset af at der er total rækker, der kan skabe statistisk inflation i dette. **Fokus skal derfor rettes på medianen (50%), hvor tallet falder til henholdsvis 277 og 275 respektivt.**")
-st.markdown("Der er en lille diskrepans på gennemsnittet for 'Score' og Score Indekseret Gennemsnit. Dette er dog ned til 1. decimal og ændrer derfor ikke i det store billede for dataet og vores fremtidige analyse.")
+
+st.markdown("""
+##### Statistisk analyse af branche_data_filtered
+
+* Den statistiske analyse af `branche_data_filtered` viser et gennemsnitligt indekseret score på 3.72 for spørgsmål, hvor en høj score er god. For spørgsmål, hvor en høj score er dårlig, er tallet 2.83. Dette indikerer, at respondenterne i undersøgelsen generelt har givet højere svar på spørgsmål, hvor 5 er godt, end hvor 5 er dårligt.
+
+* Gennemsnittet af antallet af personer, der har svaret på hvert spørgsmål, er 968 for spørgsmål, hvor en høj score er god, og 967 for spørgsmål, hvor en høj score er dårlig. Dette tal skal dog tages med et gran salt, da der kan være totalrækker, der skaber statistisk inflation. Derfor bør fokus i stedet rettes mod medianen (50%), hvor tallet falder til 277 og 275, henholdsvis.
+
+* Der er en lille diskrepans mellem gennemsnittet for 'Score' og Score Indekseret Gennemsnit, men dette er kun ned til 1. decimal og påvirker ikke det overordnede billede af dataene og vores fremtidige analyse.
+""")
+
 
 st.markdown("#### Køn og alder")
 
@@ -167,9 +175,16 @@ st.write(koen_alder_data_filtered[koen_alder_data_filtered['Hoej Score Godt'] ==
 st.markdown("Summary statistics, hvor 'Hoej Score Godt' == 0, for koen_alder_data_filtered")
 st.write(koen_alder_data_filtered[koen_alder_data_filtered['Hoej Score Godt'] == 0].describe())
 
-st.markdown("Den statistiske analyse af koen_alder_data_filtered viser den gennemsnitlige indekserede score for spørgsmål, hvor høj score er godt, til 3.72. For data, hvor høj score er dårligt, er dette tal 2.815. Dette peger på stort overlap blandt spørgsmålene, samtidig også på den samplede population.")
-st.markdown("En stor forskel i forhold til branche-dataet er gennemsnittet af antal personer, der har svaret på hvert spørgsmål. **Sættes fokus på medianen (50%) som beskrevet i analysen for branche-dataet, er tallene 4716 og 4811 respektivt.** Altså markant højere end før. Dette giver god mening, da sampling her ikke er på branche, men derimod på køn og grupperet alder.")
-st.markdown("Der er flere spørgsmål, hvor 'Hoej Score Godt' er == 1. Tallene er 348 for godt og 192 for ikke godt.")
+st.markdown("""
+##### Statistisk analyse af koen_alder_data_filtered
+
+* Gennemsnitlig indekseret score for spørgsmål med høj score som godt er 3.72, mens det er 2.815 for spørgsmål med høj score som dårligt. Dette antyder et stort overlap blandt spørgsmålene og den samplede befolkning.
+
+* Sammenlignet med branche-dataet er medianen (50%) af antal personer, der har svaret på hvert spørgsmål, højere i koen_alder_data_filtered. For spørgsmål med høj score som godt er medianen 4716, mens den for spørgsmål med høj score som dårligt er 4811. Dette giver god mening, da samplingen i dette datasæt er baseret på køn og aldersgrupper i stedet for branche, hvorfor grupperne er større end eksempelvis niche brancher. 
+
+* Der er flere spørgsmål, hvor høj score betragtes som godt (1), med 348 tilfælde, sammenlignet med 192 tilfælde for spørgsmål, hvor høj score betragtes som dårligt.
+""")
+
 
 st.markdown("""
 _________
