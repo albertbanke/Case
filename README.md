@@ -21,7 +21,7 @@ Udover det tilsendte data, er der yderligere indhentet data fra tidligere unders
 
 ## Analyse
 
-Text
+Analysen findes to stedet. For den komplette all-inclusive, så gå til Notebooken (Case/analysis/analysis.ipynb). For rene findings, gå til HTML-visningen.
 
 ---
 
