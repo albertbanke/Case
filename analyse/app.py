@@ -260,10 +260,12 @@ Data indlæses fra https://at.dk/arbejdsmiljoe-i-tal/national-overvaagning-af-ar
 """)
 
 my_url = r'https://raw.githubusercontent.com/albertbanke/Case/main/data/Udvikling%20i%20branchen%20undervisning%20(2012%20til%202018).csv'
-download_undervisning = requests.get(my_url)
-# Sætter filepathen
+download_undervisning = requests.get(my_url).content
 
-undervisning_2012_2018 = pd.read_csv(pd.compat.StringIO(download_undervisning.content.decode("utf-8")), sep=",", encoding='utf-8')
+file_like_undervisning = io.StringIO(download_undervisning.decode('utf-8'))
+
+# Load the data
+undervisning_2012_2018 = pd.read_csv(file_like_undervisning, sep = ",", encoding='utf-8')
 
 # Checker at dataet er loaded korrekt
 undervisning_2012_2018 # Ser helt fint ud, ikke behov for så tunge transformationer som tidligere data 
