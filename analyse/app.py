@@ -33,7 +33,7 @@ st.markdown("""
 st.markdown("""
             **Motivationen** for notebooken skal findes i timingen af Arbejdstilsynets andet-årlige rapport fra 2018, hvor de spurgte 50.000 danskere om deres fysiske og psykiske arbejdsmiljø. Dette var en af de sidste rapporter, der blev udgivet, inden verden blev ramt af COVID-19 pandemien, og derfor vil denne case give os et værdifuldt indblik i arbejdsmiljøet for de adspurgte danskere inden arbejdsmiljøer rundt om blev ændret af work-from-home, Microsoft Teams og massere af afstand.
             
-            Findings fra dataet er følgende. 
+            Findings fra dataet er følgende 
 
 *EDA:*
 
