@@ -514,24 +514,13 @@ st.markdown("""
 🐣
 """)
 
-st.write("""
-# Interactive Plot with Filter Option
 
-This example demonstrates how you can create an interactive plot in Plotly in Streamlit, with a filter option for the 'Hoej Score Godt' column.
-""")
+st.title('Score by Topic Label')
 
-df = branche_data_filtered
+grouped_data_topic = branche_data_filtered.groupby('Topic Label')['Score'].mean()
 
-# Filter data based on the value of the 'Hoej Score Godt' column
-def filter_data(df, hoej_score_godt):
-    return df[df['Hoej Score Godt'] == hoej_score_godt]
+fig = px.bar(grouped_data_topic.reset_index(), x='Topic Label', y='Score')
 
-# Create a radio button for the user to select the value of 'Hoej Score Godt'
-filter_value = st.sidebar.radio("Filter 'Hoej Score Godt' column", (0, 1))
-filtered_data = filter_data(df, filter_value)
-
-# Create a bar chart using Plotly Express
-fig = px.bar(filtered_data, x='Topic Label', y='Score (Indekseret score) (gennemsnit) (label)')
 st.plotly_chart(fig)
 
 
