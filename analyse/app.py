@@ -525,5 +525,10 @@ fig = px.bar(grouped_data_topic, x='Topic Label', y='Score', color='Hoej Score G
 st.plotly_chart(fig)
 
 
+st.markdown("""
+_________
+""")
+
+
 
 
