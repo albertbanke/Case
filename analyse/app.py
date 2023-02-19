@@ -457,6 +457,8 @@ x = scaled_features[:, 0]
 y = scaled_features[:, 1]
 z = scaled_features[:, 2]
 
+st.title('Unsupervised clustering for køn, alder og score (skaleret)')
+
 # Create the 3D scatter plot with the KMeans labels
 fig = px.scatter_3d(x=x, y=y, z=z, color=kmeans.labels_, color_discrete_sequence=px.colors.sequential.Viridis)
 
