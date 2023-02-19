@@ -463,12 +463,10 @@ st.title('Unsupervised clustering for køn, alder og score (skaleret)')
 fig = px.scatter_3d(x=x, y=y, z=z, color=kmeans.labels_, color_discrete_sequence=px.colors.sequential.Viridis)
 
 # Plot cluster centers
-fig.add_scatter3d(x=cluster_centers[:, 0], y=cluster_centers[:, 1], z=cluster_centers[:, 2], mode='markers', name='Cluster centroids', 
-                  marker=dict(size=10, color='red', symbol='circle'))
-# Vis plottet
-fig.update_layout(title='Unsupervised clustering for køn, alder og score (skaleret)', 
-                  scene=dict(xaxis_title='Køn (skaleret)', yaxis_title='Alder (skaleret)', zaxis_title='Score (skaleret)'),
-                  legend_title='Clusters')
+fig.add_scatter3d(x=cluster_centers[:, 0], y=cluster_centers[:, 1], z=cluster_centers[:, 2], mode='markers', marker=dict(size=10, color='red', symbol='circle'))
+
+# Update the plot layout
+fig.update_layout(scene=dict(xaxis_title='Køn (skaleret)', yaxis_title='Alder (skaleret)', zaxis_title='Score (skaleret)'))
 
 # Show the plot in Streamlit
 st.plotly_chart(fig)
