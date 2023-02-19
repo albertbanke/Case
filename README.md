@@ -6,7 +6,7 @@
 
 
 # Case for PFA
-Velkommen til mit GitHub repository for min case ved PFA. Her vil du finde dataet brugt til analyse, samt analysen i form af en Jupyter Notebook. Dette repository vil opdateres til og med søndag d. 21 februar, hvorefter det vil gå i dvale 
+Velkommen til mit GitHub repository for min case ved PFA. Her vil du finde dataet brugt til analyse, samt analysen i form af en Jupyter Notebook. Dette repository vil opdateres til og med søndag d. 19 februar, hvorefter det vil gå i dvale 
 
 ---
 
@@ -21,7 +21,7 @@ Udover det tilsendte data, er der yderligere indhentet data fra tidligere unders
 
 ## Analyse
 
-Analysen findes to steder. For den komplette all-inclusive, så gå til Notebooken (Case/analysis/analysis.ipynb). For rene findings, gå til [HTML-visningen](https://albertbanke-case-analyseapp-ghjgeb.streamlit.app/).
+Analysen findes to steder. For den komplette all-inclusive, så gå til Notebooken (Case/analyse/analysis.ipynb). For rene findings, gå til [HTML-visningen](https://albertbanke-case-analyseapp-ghjgeb.streamlit.app/).
 
 ---
 
