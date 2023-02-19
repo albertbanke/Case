@@ -6,7 +6,7 @@
 
 
 # Case for PFA
-Velkommen til mit GitHub repository for min case ved PFA. Her vil du finde dataet brugt til analyse, samt analysen i form af en Jupyter Notebook. Dette repository vil opdateres til og med søndag d. 21 februar, hvorefter det vil gå i dvale 
+Velkommen til mit GitHub repository for min case ved PFA. Her vil du finde dataet brugt til analyse, samt analysen i form af en Jupyter Notebook. Dette repository vil opdateres til og med søndag d. 19 februar, hvorefter det vil gå i dvale 
 
 ---
 
