@@ -244,7 +244,7 @@ def plot_top_and_bottom_groups(dataframe, hsg_value, kilde):
 
     # Opret et søjlediagram med Plotlys px
     fig = px.bar(kombineret_data, x='Score', y='Group', color='Group Type', color_discrete_sequence=['lightsalmon', '#1f77b4'], orientation='h')
-    fig.update_layout(title=f'Øverste og nederste 5 grupper efter samlet score for {kilde}. Høj score godt = {hsg_value}', xaxis_title='Score', yaxis_title='Group')
+    fig.update_layout(title=f'Øverste og nederste 5 grupper ved gennemsnitlig score for {kilde}. Høj score godt = {hsg_value}', xaxis_title='Score', yaxis_title='Group')
     st.plotly_chart(fig)
 
 st.markdown("#### Branche data")
