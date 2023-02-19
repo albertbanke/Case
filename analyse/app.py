@@ -428,7 +428,7 @@ for num_clusters in cluster_range:
 # Plot WCSS
 fig = px.line(x=cluster_range, y=wcss)
 fig.update_layout(
-    title="Albue-metode til optimal antal clusters",
+    title="Albue-metode til optimalt antal clusters",
     xaxis_title="Antal clusters",
     yaxis_title="Within-Cluster-Sum-of-Squared-Errors (WCSS)",
 )
