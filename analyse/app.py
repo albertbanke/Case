@@ -18,7 +18,7 @@ from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 
 
-st.title('Case for PFA - findings')
+st.title('Case omkring Arbejdstilsynet - findings')
 st.subheader('Albert Cort Banke')
 
 # Add some text to the app
