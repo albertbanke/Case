@@ -1,5 +1,5 @@
 # Præsentation
-Velkommen til mit GitHub repository for min case om Arbejdstilsynets data. Her vil du finde dataet brugt til analyse, samt analysen i form af en Jupyter Notebook. Dette repository vil opdateres til og med søndag d. 19 februar, hvorefter det vil gå i dvale 
+Velkommen til mit GitHub repository for en analyse af Arbejdstilsynets data. Her vil du finde dataet brugt til analyse, samt analysen i form af en Jupyter Notebook. Dette repository vil opdateres til og med søndag d. 19 februar, hvorefter det vil gå i dvale. Formålet er at demonstere evnerne til at opsætte en Streamlit hjemmeside ud fra Python kode.
 
 ---
 
