@@ -14,7 +14,7 @@ Udover det tilsendte data, er der yderligere indhentet data fra tidligere unders
 
 ## Analyse
 
-Analysen findes to steder. For den komplette all-inclusive, så gå til Notebooken (Case/analyse/analysis.ipynb). For rene findings, gå til [HTML-visningen](https://albertbanke-case-analyseapp-ghjgeb.streamlit.app/).
+Analysen findes to steder. For den komplette all-inclusive, så gå til Notebooken (root/analyse/analysis.ipynb). For rene findings, gå til [HTML-visningen](https://albertbanke-case-analyseapp-ghjgeb.streamlit.app/).
 
 ---
 
